@@ -3,7 +3,8 @@ Examples of Wikidata SPARQL queries
 
 ### Research Organization Registry (ROR) institutions: https://w.wiki/8w6j
 
-```#defaultView:Map
+```
+#defaultView:Map
 SELECT ?s ?sLabel ?countryLabel ?img ?coord
 WHERE { 
     VALUES ?type {wd:Q31855 wd:Q3918}
