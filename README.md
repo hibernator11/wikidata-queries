@@ -18,7 +18,7 @@ WHERE {
 LIMIT 100
 ```
 
-### Works from Biblioteca Virtual Miguel de Cervantes with an unknown author
+### Works from the Biblioteca Virtual Miguel de Cervantes with an unknown author
 ```
 select ?sLabel
 where {
@@ -28,7 +28,7 @@ where {
 }
 ```
 
-### Works from BnF with an unknown author
+### Works from the BnF with an unknown author
 ```
 select ?s ?sLabel
 where {
@@ -39,6 +39,16 @@ where {
 } limit 1000
 ```
 
+### Works from the National Library of Spain with an unknown author
+```
+select ?s ?sLabel
+where {
+      ?s wdt:P950 ?idwork .
+      ?s p:P50 ?o . 
+      ?o pq:P3831 wd:Q4233718
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+} limit 1000
+```
 
 ### References
 
