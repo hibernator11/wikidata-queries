@@ -1,22 +1,7 @@
 # wikidata-queries
 Examples of Wikidata SPARQL queries
 
-### Research Organization Registry (ROR) institutions: https://w.wiki/8w6j
 
-```
-#defaultView:Map
-SELECT ?s ?sLabel ?countryLabel ?img ?coord
-WHERE { 
-    VALUES ?type {wd:Q31855 wd:Q3918}
-    ?s wdt:P31 ?type .
-    ?s wdt:P17 ?country .
-    ?s wdt:P6782 ?ror .
-    ?country wdt:P625 ?coord.
-    OPTIONAL {?s wdt:P18 ?img .}   
-    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-}
-LIMIT 100
-```
 
 ### Works from the Biblioteca Virtual Miguel de Cervantes with an unknown author
 ```
@@ -60,6 +45,25 @@ where {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 } limit 1000
 ```
+
+### Other examples: Research Organization Registry (ROR) institutions: https://w.wiki/8w6j
+
+```
+#defaultView:Map
+SELECT ?s ?sLabel ?countryLabel ?img ?coord
+WHERE { 
+    VALUES ?type {wd:Q31855 wd:Q3918}
+    ?s wdt:P31 ?type .
+    ?s wdt:P17 ?country .
+    ?s wdt:P6782 ?ror .
+    ?country wdt:P625 ?coord.
+    OPTIONAL {?s wdt:P18 ?img .}   
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+LIMIT 100
+```
+
 ### References
 
-https://en.wikibooks.org/wiki/SPARQL/WIKIDATA_Qualifiers,_References_and_Ranks
+-https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
+-https://en.wikibooks.org/wiki/SPARQL/WIKIDATA_Qualifiers,_References_and_Ranks
