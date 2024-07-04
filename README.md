@@ -27,3 +27,19 @@ where {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
 ```
+
+### Works from BnF with an unknown author
+```
+select ?s ?sLabel
+where {
+      ?s wdt:P268 ?idwork .
+      ?s p:P50 ?o . # Lazarillo de tormes
+      ?o pq:P3831 wd:Q4233718
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+} limit 1000
+```
+
+
+### References
+
+https://en.wikibooks.org/wiki/SPARQL/WIKIDATA_Qualifiers,_References_and_Ranks
