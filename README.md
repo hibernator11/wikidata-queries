@@ -18,3 +18,13 @@ WHERE {
 LIMIT 100
 ```
 
+### Works from Biblioteca Virtual Miguel de Cervantes with an unknown author
+```
+select ?sLabel
+where {
+      ?s wdt:P3976 ?idwork .
+      ?s p:P50 ?o . # Lazarillo de tormes
+      ?o pq:P3831 wd:Q4233718
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+```
