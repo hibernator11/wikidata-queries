@@ -50,6 +50,16 @@ where {
 } limit 1000
 ```
 
+### Works from the National Library of Spain with an author with preferred rank (see, for instance, https://www.wikidata.org/wiki/Q233780)
+```
+select *
+where {
+      ?s wdt:P950 ?idwork .
+      ?s p:P50 ?o . 
+      ?o wikibase:rank wikibase:PreferredRank
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+} limit 1000
+```
 ### References
 
 https://en.wikibooks.org/wiki/SPARQL/WIKIDATA_Qualifiers,_References_and_Ranks
