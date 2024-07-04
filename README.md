@@ -23,8 +23,7 @@ LIMIT 100
 select ?sLabel
 where {
       ?s wdt:P3976 ?idwork .
-      ?s p:P50 ?o . # Lazarillo de tormes
-      ?o pq:P3831 wd:Q4233718
+      ?s p:P50 ?o . 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
 ```
