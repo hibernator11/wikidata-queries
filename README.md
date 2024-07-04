@@ -33,7 +33,7 @@ where {
 select ?s ?sLabel
 where {
       ?s wdt:P268 ?idwork .
-      ?s p:P50 ?o . # Lazarillo de tormes
+      ?s p:P50 ?o . 
       ?o pq:P3831 wd:Q4233718
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 } limit 1000
