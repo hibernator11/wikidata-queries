@@ -78,6 +78,19 @@ WHERE {
 LIMIT 100
 ```
 
+### Properties of museums in Spain: https://w.wiki/E5mb
+```
+SELECT ?museo ?museoLabel ?propiedad ?propiedadLabel
+WHERE {
+  ?museo wdt:P31/wdt:P279* wd:Q33506 . 
+  ?museo wdt:P17 wd:Q29 .
+  ?museo wdt:P1687 ?propiedad
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],es". }
+}
+LIMIT 100
+```
+
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
