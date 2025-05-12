@@ -63,6 +63,21 @@ WHERE {
 LIMIT 100
 ```
 
+### Museo del Prado and place of birth of the artists: https://w.wiki/E5fo
+
+```
+#defaultView:Map
+SELECT ?s ?sLabel ?nacimientoLabel ?img ?coord
+WHERE { 
+    ?s wdt:P19 ?nacimiento .
+    ?s wdt:P5321 ?idPrado .
+    ?nacimiento wdt:P625 ?coord.
+    OPTIONAL {?s wdt:P18 ?img .}   
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],es". }
+}
+LIMIT 100
+```
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
