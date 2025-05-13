@@ -90,6 +90,17 @@ WHERE {
 LIMIT 100
 ```
 
+### Properties of museums in Wikidata: https://w.wiki/E73G
+```
+SELECT distinct ?museo ?museoLabel ?propiedad ?propiedadLabel
+WHERE {
+  ?museo wdt:P31/wdt:P279* wd:Q33506 . 
+  ?museo wdt:P1687 ?propiedad
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,mul". }
+}
+order by ?museoLabel
+LIMIT 500
+```
 
 ### References
 
