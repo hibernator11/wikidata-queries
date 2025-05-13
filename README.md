@@ -102,6 +102,22 @@ order by ?museoLabel
 LIMIT 500
 ```
 
+### Items per property in museums: https://w.wiki/E73e
+
+```
+SELECT distinct ?museo ?museoLabel ?propiedad ?propiedadLabel (count(?item) as ?total)
+WHERE {
+  ?museo wdt:P31/wdt:P279* wd:Q33506 . 
+  ?museo wdt:P1687 ?propiedad .
+  BIND(URI(REPLACE(STR(?propiedad), STR(wd:), STR(wdt:))) AS ?id)
+  ?item ?id ?value
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,mul". }
+}
+group by ?museo ?museoLabel ?propiedad ?propiedadLabel
+order by ?museoLabel
+LIMIT 500
+```
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
