@@ -135,6 +135,26 @@ order by ?museoLabel
 LIMIT 500
 ```
 
+### Works provided by El Prado museum : https://w.wiki/EEpE
+
+```
+SELECT *
+WHERE{
+  ?s wdt:P31 wd:Q3305213.
+  ?s wdt:P571 ?inception .
+  ?s wdt:P1476 ?title .
+  ?s wdt:P135 ?movement . ?movement rdfs:label ?movementLabel . FILTER (lang(?movementLabel) = 'es') .
+  ?s wdt:P276 ?location . ?location rdfs:label ?locationLabel . FILTER (lang(?locationLabel) = 'es') .
+  ?s wdt:P136 ?genre . ?genre rdfs:label ?genreLabel . FILTER (lang(?genreLabel) = 'es') .
+  ?s wdt:P170 ?author . ?author rdfs:label ?authorLabel . FILTER (lang(?authorLabel) = 'es') .
+  ?s wdt:P180 ?depicts . ?depicts rdfs:label ?depictsLabel . FILTER (lang(?depictsLabel) = 'es') .
+  ?s wdt:P1071 ?locationcreation . ?locationcreation rdfs:label ?locationcreationLabel . FILTER (lang(?locationcreationLabel) = 'es') .
+  ?s wdt:P8905 ?idPrado .
+}
+LIMIT 1000
+```
+
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
