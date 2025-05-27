@@ -62,6 +62,7 @@ WHERE {
 }
 LIMIT 100
 ```
+## Museums
 
 ### Museo del Prado and place of birth of the artists: https://w.wiki/E5fo
 
