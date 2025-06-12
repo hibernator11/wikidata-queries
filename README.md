@@ -155,6 +155,43 @@ WHERE{
 LIMIT 1000
 ```
 
+## Monuments in Alicante
+```
+#defaultView:Map
+select ?s ?type ?typeLabel ?sLabel ?coord ?location ?image ?statusLabel ?describedAt ?website ?inception ?architech ?architechLabel ?styleLabel
+where {
+  {
+      values ?type {wd:Q4989906 wd:Q1772504 wd:Q2080521 wd:Q207694 wd:Q174782 wd:Q41176 wd:Q860861 wd:Q44613 wd:Q16560 wd:Q56750657 wd:Q2388635 wd:Q1007870}
+      ?s wdt:P31 ?type .
+      ?s wdt:P131 wd:Q11959 . 
+      ?s wdt:P625 ?coord .
+      optional {?s wdt:P276 ?location .}
+      optional {?s wdt:P18 ?image .}  
+      optional {?s wdt:P1435 ?status}
+      optional {?s wdt:P973 ?describedAt}
+      optional {?s wdt:P856 ?website}
+      optional {?s wdt:P571 ?inception}
+      optional {?s wdt:P84 ?architech}
+      optional {?s wdt:P149 ?style}
+   }
+   UNION 
+   {
+      values ?type {wd:Q22996476}
+      ?s wdt:P31 ?type .
+      ?s wdt:P1001 wd:Q11959 . 
+      ?s wdt:P625 ?coord .
+      optional {?s wdt:P276 ?location .}
+      optional {?s wdt:P18 ?image .}  
+      optional {?s wdt:P1435 ?status}
+      optional {?s wdt:P973 ?describedAt}
+      optional {?s wdt:P856 ?website}
+      optional {?s wdt:P571 ?inception}
+      optional {?s wdt:P84 ?architech}
+     optional {?s wdt:P149 ?style}
+   }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],es". }
+}
+```
 
 ### References
 
