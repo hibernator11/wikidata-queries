@@ -1,7 +1,15 @@
 # wikidata-queries
 Examples of Wikidata SPARQL queries
 
+### Jupyter Notebook examples
 
+These examples show how to query Wikidata using SPARQL:
+- [Retrieve bibliographical items](https://nbviewer.org/github/hibernator11/dhwiki-notebooks/blob/main/notebooks/wikidata-dataspace-example.ipynb)
+
+## Running the notebooks
+**To execute the notebook in Binder:**
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/hibernator11/wikidata-queries/HEAD)
 
 ### Works from the Biblioteca Virtual Miguel de Cervantes with an unknown author
 ```
