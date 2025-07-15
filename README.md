@@ -4,7 +4,7 @@ Examples of Wikidata SPARQL queries
 ### Jupyter Notebook examples
 
 These examples show how to query Wikidata using SPARQL:
-- [Retrieve bibliographical items](https://nbviewer.org/github/hibernator11/dhwiki-notebooks/blob/main/notebooks/wikidata-dataspace-example.ipynb)
+- [Retrieve from Wikidata touristc locations in Alicante](https://nbviewer.org/github/hibernator11/dhwiki-notebooks/blob/main/notebooks/wikidata-dataspace-example.ipynb)
 
 ## Running the notebooks
 **To execute the notebook in Binder:**
