@@ -111,20 +111,21 @@ order by ?museoLabel
 LIMIT 500
 ```
 
-### Items per property in museums: https://w.wiki/E73e
+### Items per property in Art museums with more than 5000 records connected: https://w.wiki/EzrX
 
-```
-SELECT distinct ?museo ?museoLabel ?propiedad ?propiedadLabel (count(?item) as ?total)
+```SELECT distinct ?museo ?museoLabel ?propiedad ?propiedadLabel (count(?item) as ?total)
 WHERE {
-  ?museo wdt:P31/wdt:P279* wd:Q33506 . 
+  ?museo wdt:P31/wdt:P279* wd:Q207694 . 
   ?museo wdt:P1687 ?propiedad .
+  ?propiedad wdt:P31 wd:Q44847669 .
   BIND(URI(REPLACE(STR(?propiedad), STR(wd:), STR(wdt:))) AS ?id)
   ?item ?id ?value
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,mul". }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 group by ?museo ?museoLabel ?propiedad ?propiedadLabel
-order by ?museoLabel
-LIMIT 500
+having(?total>5000)
+order by ?total
+LIMIT 100 OFFSET 0
 ```
 
 ### Items per property in museums with at least 1000 items connected: https://w.wiki/E73u
