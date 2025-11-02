@@ -32,6 +32,29 @@ where {
 } limit 1000
 ```
 
+### Institutions in Spain with a Wikidata property and at least 5000 records linked
+```
+SELECT distinct ?org ?orgLabel ?property ?propertyLabel (count(?item) as ?total)
+
+WHERE {
+  
+  VALUES ?orgtype { wd:Q22806 wd:Q207694 wd:Q212805 wd:Q36524}
+  VALUES ?proptype { wd:Q55586529 wd:Q44847669 }
+  ?org wdt:P31 ?orgtype . 
+  ?org wdt:P1687 ?property .
+  ?org wdt:P17 wd:Q29 .
+  BIND(URI(REPLACE(STR(?property), STR(wd:), STR(wdt:))) AS ?id)
+  ?item ?id ?value
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es". }
+}
+GROUP BY ?org ?orgLabel ?property ?propertyLabel
+HAVING(?total>5000)
+ORDER BY DESC(?total)
+
+LIMIT 100 OFFSET 0
+```
+
+
 ### Works from the National Library of Spain with an unknown author
 ```
 select ?s ?sLabel
