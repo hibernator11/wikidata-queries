@@ -11,6 +11,31 @@ These examples show how to query Wikidata using SPARQL:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/hibernator11/wikidata-queries/HEAD)
 
+### Works from the BnF of the researcher Santigo Ramón y Cajal obtained using a federated query from Wikidata
+```
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdarelationships: <http://rdvocab.info/RDARelationshipsWEMI/>
+PREFIX rdagroup1elements: <http://rdvocab.info/Elements/>
+
+SELECT ?author ?expression ?title ?edition ?placeOfPublication ?yearOfPublication ?langCode WHERE {
+wd:Q150526 wdt:P268 ?id
+BIND(uri(concat(concat("http://data.bnf.fr/ark:/12148/cb", ?id),"#about")) as ?author)
+SERVICE <http://data.bnf.fr/sparql> {
+  ?expression <http://id.loc.gov/vocabulary/relators/aut> ?author .
+  OPTIONAL {?expression dcterms:language ?langCode .}
+  OPTIONAL {?manifestation dcterms:publisher ?edition .}
+  ?manifestation rdarelationships:expressionManifested ?expression .
+  ?manifestation dcterms:title ?title .
+  ?manifestation dcterms:date ?yearOfPublication .
+  OPTIONAL{ ?manifestation rdagroup1elements:placeOfPublication ?placeOfPublication .}
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+
+}
+limit 100
+```
+
+
 ### Works from the Biblioteca Virtual Miguel de Cervantes with an unknown author
 ```
 select ?sLabel
