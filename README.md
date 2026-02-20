@@ -11,6 +11,8 @@ These examples show how to query Wikidata using SPARQL:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/hibernator11/wikidata-queries/HEAD)
 
+## Examples of SPARQL queries
+
 ### Works from the BnF of the researcher Santigo Ramón y Cajal obtained using a federated query from Wikidata
 ```
 PREFIX dcterms: <http://purl.org/dc/terms/>
