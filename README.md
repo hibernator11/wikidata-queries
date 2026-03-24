@@ -252,6 +252,21 @@ where {
 }
 ```
 
+### Filter towns by text
+```
+SELECT ?municipio ?municipioLabel ?provincia ?provinciaLabel ?provinciaEs
+where {?municipio wdt:P31 wd:Q2074737 .
+       ?municipio wdt:P17 wd:Q29 .
+       ?municipio rdfs:label ?municipioEs . FILTER( LANG(?municipioEs)="es" )
+       FILTER(CONTAINS(?municipioEs, "Santa Pola")).   
+       ?municipio wdt:P131 ?provincia .
+       ?provincia rdfs:label ?provinciaEs . FILTER( LANG(?provinciaEs)="es" )
+       FILTER(CONTAINS(?provinciaEs, "Alicante")).    
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "es". }
+}
+LIMIT 10
+```
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
