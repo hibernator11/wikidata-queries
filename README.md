@@ -267,7 +267,7 @@ where {?municipio wdt:P31 wd:Q2074737 .
 LIMIT 10
 ```
 
-### Works from a painter (Diego Velazquez) from the National Library of the Netherlands
+### Works of the painter Diego Velazquez from the National Library of the Netherlands (https://data.bibliotheken.nl/KB/Production/sparql)
 ```
 prefix ns1: <http://schema.org/>
 prefix owl: <http://www.w3.org/2002/07/owl#>
@@ -279,7 +279,7 @@ select ?s where {
 ```
 
 
-### Works from a painter (Diego Velazquez) from the National Library of France
+### Works of the painter Diego Velazquez from the National Library of France
 ```
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdarelationships: <http://rdvocab.info/RDARelationshipsWEMI/>
