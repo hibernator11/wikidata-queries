@@ -310,3 +310,4 @@ limit 100
 - Gustavo Candela: An automatic data quality approach to assess semantic data from cultural heritage institutions. J. Assoc. Inf. Sci. Technol. 74(7): 866-878 (2023). https://doi.org/10.1002/asi.24761
 - https://en.wikibooks.org/wiki/SPARQL/WIKIDATA_Qualifiers,_References_and_Ranks
 - https://www.wikidata.org/wiki/Help:Qualifiers
+- https://bibliotecadigital.museodelprado.es/pradobib/es/bib/list/29.do?lo=grid
