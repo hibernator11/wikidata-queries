@@ -267,6 +267,43 @@ where {?municipio wdt:P31 wd:Q2074737 .
 LIMIT 10
 ```
 
+### Works from a painter (Diego Velazquez) from the National Library of the Netherlands
+```
+prefix ns1: <http://schema.org/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+select ?s where {
+  ?s ns1:about <http://data.bibliotheken.nl/id/thes/p070150494>
+  #?s ns1:author <http://data.bibliotheken.nl/id/thes/p070150494> .
+  #?s ns1:sameAs <http://www.worldcat.org/oclc/64917801>
+} limit 100
+```
+
+
+### Works from a painter (Diego Velazquez) from the National Library of France
+```
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdarelationships: <http://rdvocab.info/RDARelationshipsWEMI/>
+PREFIX rdagroup1elements: <http://rdvocab.info/Elements/>
+
+SELECT ?author ?expression ?title ?edition ?placeOfPublication ?yearOfPublication ?langCode WHERE {
+wd:Q297 wdt:P268 ?id
+BIND(uri(concat(concat("http://data.bnf.fr/ark:/12148/cb", ?id),"#about")) as ?author)
+SERVICE <http://data.bnf.fr/sparql> {
+  ?expression <http://id.loc.gov/vocabulary/relators/aut> ?author .
+  OPTIONAL {?expression dcterms:language ?langCode .}
+  OPTIONAL {?manifestation dcterms:publisher ?edition .}
+  ?manifestation rdarelationships:expressionManifested ?expression .
+  ?manifestation dcterms:title ?title .
+  ?manifestation dcterms:date ?yearOfPublication .
+  OPTIONAL{ ?manifestation rdagroup1elements:placeOfPublication ?placeOfPublication .}
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+
+}
+limit 100
+```
+
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
