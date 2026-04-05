@@ -303,6 +303,16 @@ SERVICE <http://data.bnf.fr/sparql> {
 limit 100
 ```
 
+### Painting in Prado with the property depicts
+
+```
+select distinct ?s ?sLabel 
+where {?s wdt:P8905 ?prado . 
+       ?s wdt:P18 ?image.
+       ?s wdt:P180 ?depicts
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }}
+limit 10000
+```
 
 ### References
 
