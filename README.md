@@ -306,11 +306,14 @@ limit 100
 ### Painting in Prado with the property depicts
 
 ```
-select distinct ?s ?sLabel 
+select distinct ?s ?sLabel ?author ?authorLabel (SAMPLE(?date) AS ?year)
 where {?s wdt:P8905 ?prado . 
        ?s wdt:P18 ?image.
-       ?s wdt:P180 ?depicts
+       ?s wdt:P180 ?depicts.
+       ?s wdt:P571 ?date.
+       ?s wdt:P170 ?author
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }}
+GROUP BY ?s ?sLabel ?author ?authorLabel
 limit 10000
 ```
 
