@@ -317,6 +317,60 @@ GROUP BY ?s ?sLabel ?author ?authorLabel
 limit 10000
 ```
 
+### Information about Victor Hugo
+```
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+
+CONSTRUCT {
+  wd:Q535 wdt:P31 ?type .
+  wd:Q535 wdt:P18 ?image .
+  wd:Q535 wdt:P27 ?citizenship .
+  wd:Q535 wdt:P569 ?dateBirth .
+  ?citizenship rdfs:label ?citizenshipLabel .
+  wd:Q535 wdt:P19 ?placeBirth .
+  ?placeBirth rdfs:label ?placeBirthLabel .
+  wd:Q535 wdt:P19 ?placeDeath .
+  ?placeDeath rdfs:label ?placeDeathLabel .
+  wd:Q535 wdt:P119 ?burial .
+  ?burial rdfs:label ?burialLabel .
+  wd:Q535 wdt:P1442 ?graveImage .
+  wd:Q535 wdt:P103 ?language.
+  ?language rdfs:label ?languageLabel .
+  wd:Q535 wdt:P106 ?occupation.
+  ?occupation rdfs:label ?occupationLabel .
+  wd:Q535 wdt:P135 ?movement.
+  ?movement rdfs:label ?movementLabel .
+  wd:Q535 wdt:P800 ?work.
+  ?work rdfs:label ?workLabel .
+}
+WHERE {
+  wd:Q535 wdt:P31 ?type .
+  wd:Q535 wdt:P18 ?image .
+  wd:Q535 wdt:P27 ?citizenship .
+  wd:Q535 wdt:P569 ?dateBirth .     
+  wd:Q535 wdt:P19 ?placeBirth .
+  ?citizenship rdfs:label ?citizenshipLabel  FILTER (lang(?citizenshipLabel) = 'en') .
+  ?placeBirth rdfs:label ?placeBirthLabel  FILTER (lang(?placeBirthLabel) = 'en') .
+  wd:Q535 wdt:P570 ?dateDeath .     
+  wd:Q535 wdt:P20 ?placeDeath .
+  ?placeDeath rdfs:label ?placeDeathLabel  FILTER (lang(?placeDeathLabel) = 'en') .
+  wd:Q535 wdt:P509 ?causeDeath .
+  ?causeDeath rdfs:label ?causeDeathLabel  FILTER (lang(?causeDeathLabel) = 'en') .
+  wd:Q535 wdt:P119 ?burial .
+  ?burial rdfs:label ?burialLabel  FILTER (lang(?burialLabel) = 'en') .
+  wd:Q535 wdt:P1442 ?graveImage .
+  wd:Q535 wdt:P103 ?language .
+  ?language rdfs:label ?languageLabel  FILTER (lang(?languageLabel) = 'en') .
+  wd:Q535 wdt:P106 ?occupation .
+  ?occupation rdfs:label ?occupationLabel  FILTER (lang(?occupationLabel) = 'en') .
+  wd:Q535 wdt:P135 ?movement .
+  ?movement rdfs:label ?movementLabel  FILTER (lang(?movementLabel) = 'fr') .
+  wd:Q535 wdt:P800 ?work .
+  ?work rdfs:label ?workLabel  FILTER (lang(?workLabel) = 'fr') .
+}
+```
+
 ### References
 
 - https://www.semantic-web-journal.net/content/assessing-weaker-logical-status-claims-wikidata-cultural-heritage-records-1
