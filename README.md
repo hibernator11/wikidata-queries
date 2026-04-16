@@ -318,9 +318,11 @@ limit 10000
 ```
 
 ### Information about Victor Hugo
-```
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+```PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+prefix rdagroup1elements: <http://rdvocab.info/Elements/>
+PREFIX rdarelationships: <http://rdvocab.info/RDARelationshipsWEMI/>
 
 CONSTRUCT {
   wd:Q535 wdt:P31 ?type .
@@ -343,6 +345,9 @@ CONSTRUCT {
   ?movement rdfs:label ?movementLabel .
   wd:Q535 wdt:P800 ?work.
   ?work rdfs:label ?workLabel .
+  ?manifestation dcterms:title ?title .
+  ?expression <http://id.loc.gov/vocabulary/relators/aut> ?author .
+  ?manifestation dcterms:date ?yearOfPublication .
 }
 WHERE {
   wd:Q535 wdt:P31 ?type .
@@ -368,7 +373,20 @@ WHERE {
   ?movement rdfs:label ?movementLabel  FILTER (lang(?movementLabel) = 'fr') .
   wd:Q535 wdt:P800 ?work .
   ?work rdfs:label ?workLabel  FILTER (lang(?workLabel) = 'fr') .
+  wd:Q535 wdt:P268 ?author .
+  BIND(uri(concat(concat("http://data.bnf.fr/ark:/12148/cb", ?id),"#about")) as ?author)
+            SERVICE <http://data.bnf.fr/sparql> {
+                ?expression <http://id.loc.gov/vocabulary/relators/aut> ?author .
+                OPTIONAL {?expression dcterms:language ?langCode .}
+                OPTIONAL {?expression dcterms:publisher ?edition .}
+                ?manifestation rdarelationships:expressionManifested ?expression .
+                ?manifestation dcterms:title ?title .
+                ?manifestation dcterms:date ?yearOfPublication .
+                OPTIONAL{ ?manifestation rdagroup1elements:placeOfPublication ?placeOfPublication .}
+            }
 }
+limit 100
+
 ```
 
 ### References
