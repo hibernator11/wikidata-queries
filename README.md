@@ -137,6 +137,20 @@ WHERE {
 LIMIT 100
 ```
 
+### Metadata and images from Prado museum: https://w.wiki/NKmK
+```
+SELECT DISTINCT ?s ?sLabel ?author ?authorLabel (SAMPLE(?date) AS ?year) (GROUP_CONCAT(DISTINCT ?depicts; SEPARATOR="; ") AS ?depictsall) (GROUP_CONCAT(DISTINCT ?depictsTxt; SEPARATOR="; ") AS ?depictLabelsall)  
+WHERE {?s wdt:P8905 ?prado . 
+       ?s wdt:P18 ?image.
+       optional {?s wdt:P180 ?depicts. ?depicts rdfs:label ?depictsTxt . FILTER (LANG(?depictsTxt) = "en")}
+       ?s wdt:P571 ?date.
+       ?s wdt:P170 ?author
+      SERVICE wikibase:label { bd:serviceParam wikibase:language 
+                               "[AUTO_LANGUAGE],mul,en". }
+}
+GROUP BY ?s ?sLabel ?author ?authorLabel ?year
+```
+
 ### Properties of museums in Spain: https://w.wiki/E5mb
 ```
 SELECT ?museo ?museoLabel ?propiedad ?propiedadLabel
